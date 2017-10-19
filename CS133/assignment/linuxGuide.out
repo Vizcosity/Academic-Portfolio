@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{I/O Streams}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{I/O Uses in UNIX}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{I/O Redirection}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Linux Filesystem Permissions}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Understanding the permissions system on linux}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Changing permissions on linux}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Using numerical values to assign permissions}{subsection.2.2}% 7
+\BOOKMARK [1][-]{section.3}{Bash Scripting}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Declaring variables in Bash}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Whitespace in Bash}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{IF Statements in Bash}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.4}{FOR Loops in Bash}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.5}{Arrays in Bash}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.6}{Functions in Bash}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.7}{Variable scope in Bash}{section.3}% 15

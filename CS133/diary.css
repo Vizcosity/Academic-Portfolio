@@ -1,0 +1,52 @@
+/* Used inline to highlight a keyword */
+code {
+	font-family: Roboto, sans-serif;;
+	font-weight: bold;
+}
+
+body {
+	margin: 30px;
+}
+
+hr {
+	background-color: #fafafa;
+	color: #fafafa;
+	/*height: 1px;*/
+}
+
+h3 {
+	font-family: Roboto, sans-serif;;
+	font-size: 16px;
+	font-weight: 400;
+	color: #3498db;
+}
+
+/* Use to put a box around code */
+div.code {
+	width: 75%;			/* The box should be 500 pixels wide, can be a % */
+	max-width: 400px;
+	margin-left: 40px;		/* Indent box by 40 pixels */
+	margin-top: 10px;		/* 10 pixel space between top of box and previous element */
+	margin-bottom: 10px;		/* 10 pixel space between bottom of box and next element */
+	border-width: 1;
+	border-color: silver;
+	background-color: #fafafa;	/* Hex colour code for light grey */
+	border-style: dotted;		/* Make a dotted border instead of a solid one */
+	padding: 5;			/* 5 pixel space around content */
+	padding-left: 20;		/* except for the left edge which has 20 pixels */
+	font-family: Roboto;
+	font-size: 14;
+	font-weight: normal;		/* Can be bold */
+}
+
+li {
+  font-family: Roboto;
+  font-size: 15px;
+  color: #2d2d2d;
+}
+
+mark {
+	color: #3498db;
+	margin: 0;
+	background-color: transparent;
+}

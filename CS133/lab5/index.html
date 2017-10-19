@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <title>CS133 Lab 5 Diary</title>
+    <link rel="stylesheet" type="text/css" href="../diary.css" />
+
+    <link rel="stylesheet" type="text/css" href="../../public_assets/portfolio.css">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic|Muli:300|Roboto:300" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="content-wrap">
+    <h1>
+      Lab 5: Advanced Bash Scripting and Regular Expressions
+    </h1>
+
+    <h2>
+      Exercises
+    </h2>
+    <hr noshade>
+    <h3>
+      Advanced Bash Scripting
+    </h3>
+    <ol>
+      <li>
+        <p>
+          I wrote a script using functions in bash to read a number n and output the nth number in the fibonnacci sequence. Functions are declared as follows in bash:
+        </p>
+        <div class="code">
+          function name {<br>
+            argument=$1<br>
+            # More code...<br>
+            read n # This reads keyboard input from the stdin stream and saves it to variable 'n'<br>
+            otherFunc $n # Gets the variable n and passes it into function 'otherFunc'<br>
+          }
+        </div>
+      </li>
+      <li>
+        <p>Below I created a function which takes a number argument and returns the nth fibonnacci number</p>
+        <div class="code">
+          function fib {<br>
+            fibNum=$1<br>
+            sum1=1<br>
+            sum2=1<br>
+            sumCurrent=1<br><br>
+
+           if [[ $fibNum > 1 ]] # Handle special cases 0 and 1. <br>
+           then<br>
+             for (( i=0; i<$(($fibNum-1)); i++ ))<br>
+             do<br>
+               # sum1=$sumCurrent<br>
+               sumCurrent=$sum1<br>
+               sum1=$(($sum1+$sum2))<br>
+               sum2=$sumCurrent<br>
+
+               # echo $sumCurrent<br>
+             done<br>
+           elif [[ $fibNum == 0 ]]<br>
+           then<br>
+             sum2=0<br>
+           else<br>
+             sum2=1<br>
+           fi<br>
+          }
+        </div>
+        <p>It uses a for loop to continuously add the current and previous numbers together and once the variable 'i' reached the specified <code>fibNum</code> then it echo's the result to be saved into a variable for usage later.</p>
+      </li>
+      <li>
+        <p>
+          I experimented with IO redirection such as with the use of <code>&gt;</code> to redirect the output from <code>ls</code> to a file.
+        </p>
+        <div class="code">
+          ls <mark>&gt;</mark> filename.txt
+        </div>
+        <p>
+          The <code>|</code> pipe command is a very powerful comand that allows the output of one command to be redirected into the input of another command. This can be used to
+          combine powerful commands to utilize previously unaccessable functionalities such as through the use of <code>grep</code>
+        </p>
+        <div class="code">
+          ls <mark> | grep</mark> .txt
+        </div>
+        <p>The above query will return filenames containing <code>.html</code>. I also learnt about useful filters that work in conjunction with <code>|</code> such as <mark>awk</mark> and <mark>head</mark>.</p>
+      </li>
+    </ol>
+    <h3>Regular Expressions</h3>
+    <ol>
+      <li>
+        <p>
+          <code>grep</code> can be combined with Basic Regular Expressions to make more specific matches.
+        </p>
+        <div class="code">
+          cat /usr/share/dict/words | grep <mark>'^..ing$'</mark>
+        </div>
+        <p>The <code>^</code> in the expression targets the beginning of a line, whereas the period <code>.</code> characters target any character, the <code>ing</code> characters match themselves as expected,
+        and finally the <code>$</code> dollar sign indicates the end of a line. In essence this expression matches 5 letter words containing 'ing' in the name.</p>
+      </li>
+      <li>
+        <p>
+          Extended Regular Expressions build upon the functionality provided by Basic Regular Expressions and can be used in conjunction with useful commands such as <code>sed</code> to produce powerful functionality.
+          If for example someone has misunderstood the proper usage for the term <code>'their'</code> in a text file, sed can be used to replace each instance as follows:
+        </p>
+        <div class="code">
+          cat poorlyWritten.txt | <mark>sed</mark> 's/their/they're/g > improvedWritten.txt
+        </div>
+        <p>
+          The regular expression inbetween the first and second '<code>/</code>' symbols s/<mark>their</mark>/the.. targets the words that should be replaced. The second expression after the second '<code>/</code>'
+          determines the expression that the matched items should be replaced with.
+        </p>
+      </li>
+      <li>
+        <p>
+          Using Regular Expressions I can for example hide the details of a credit card number and only inclde the last 4 digits.
+        </p>
+        <div class="code">
+          echo cardNumber.txt | sed <mark>"s/\d{12}/XXXXXXXXXXXX/g"</mark>
+        </div>
+        <p>
+          The expression matches the first 12 digits of a number, and replaces them with 'X' characters to mask out most of the number.
+        </p>
+      </li>
+    </ol>
+
+
+
+  </div>
+  <div class="bg-image"></div>
+  </body>
+</html>

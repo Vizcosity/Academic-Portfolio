@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# The purpose of this script is to be able to automate compilation of
+# tex documents into PDFs without having to go back and forth with scp and ssh.
+
+docuName=$1 # Assumes the same dir as this script.
+
+echo "Logging into SSH and compiling $docuName"
+if [[ $# == 1 ]]
+then
+  ssh u1617781@joshua.dcs.warwick.ac.uk "cd ~/public_html/CS133/assignment && pdflatex $docuName"
+fi
+
+if [[ $# == 2 ]]
+then
+  bibtexName=$2
+  ssh u1617781@joshua.dcs.warwick.ac.uk "cd ~/public_html/CS133/assignment && pdflatex $docuName && bibtex $docuName && pdflatex $docuName && pdflatex $docuName"
+fi
+
+echo "Compilation finished. Downloading..."
+downloadPath="~/public_html/CS133/assignment/$docuName*"
+scpArg="u1617781@joshua.dcs.warwick.ac.uk:$downloadPath ."
+scp $scpArg
+
+echo "Downloaded compiled LaTeX files."

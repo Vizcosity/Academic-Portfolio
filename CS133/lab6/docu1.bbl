@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{label1}
+H.~Wellington-boots, ``The science of the goose,'' {\em IEEE Transactions},
+  vol.~14, no.~3, pp.~342--351, 1991.
+
+\bibitem{label2}
+M.~BoyManJr, ``The science of caring,'' {\em IEEE Transactions}, vol.~33,
+  no.~1, pp.~12--52, 2141.
+
+\bibitem{label3}
+A.~N. Other, {\em Article 91}, vol.~14.
+\newblock 1991.
+
+\end{thebibliography}

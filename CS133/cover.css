@@ -1,0 +1,10 @@
+/* CSS FOR CS133 PORTFOLIO COVER PAGE */
+ h1 {
+   font-family: 'Cabin', sans-serif;
+   font-size: 80px;
+ }
+
+.cover-background {
+   background-image: url("https://images.unsplash.com/photo-1468336210566-1e743694dc18?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=900&fit=crop&s=d66dab0e4736a17b950257eadf8b201a.jpg");
+
+ }

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#Initialize an array of the bash arguments.
+
+argArray=( "$@" )
+
+if [[ $#%2 -eq 1 ]]
+then
+    echo "Please enter an even number of arguments"
+    exit 1
+fi
+
+
+
+for (( i = 0 ; i < ${#argArray[@]} ; i=$i+2 ))
+do
+
+    #echo "Index: " $i
+    #echo "Array Val: " ${argArray[${i}]}
+    sum=$((${argArray[${i}]}+${argArray[${i+1}]}))
+    echo "Pair Sum: of ${argArray[${i}]} and ${argArray[${i+1}]} = " $sum
+
+done
+
+exit 0

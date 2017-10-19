@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>CS133 Professional Skills Lab Diary</title>
+<link rel="stylesheet" type="text/css" href="../diary.css" />
+
+<link rel="stylesheet" type="text/css" href="../../public_assets/portfolio.css">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic|Muli:300|Roboto:300" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="content-wrap">
+<h1>Lab 1: Introduction to Unix</h1>
+
+<h2>Exercises:</h2>
+
+<ol>
+	<!--OLD I dont think this is really necessary... Not what I did at least.
+	<li>
+
+	  <p>We had to connect to joshua to run our commands. Here is what I typed</p>
+	  <p class=code>ssh csudek@joshua</p>
+	  <p>Apparently I can use PuTTY to do this from a Windows machine.</p>
+
+	</li>
+	-->
+
+	<li>
+	  <p>
+	    The <code>cp</code> command requires a source and a destination.</p>
+	    <div class=code><mark>cp</mark> ~nick/cs133/infotutorial .</div>
+	    <p>This will copy the infotutorial script to my current directory.
+	  </p>
+	</li>
+
+	<li>
+	  <p>
+	    I also practiced using the <code>chmod</code> command to make my <code>public_html/</code>
+	    directories and sub-folders readable by everyone so that my diary and portfolio can be
+	    accessed by anyone.</p>
+	    <div class="code">
+	      <mark>chmod</mark> a+r file / directory
+	      <mark>chmod</mark> a+x -R file / directory
+	    </div>
+			<p>
+				I also needed to make sure that the files within the <code>public_html/</code> folder were
+				accessible by <code>other</code> users. To do this I used:<br>
+			</p>
+			<div class="code">
+				<mark>chmod</mark> o+r -R ~/public_html
+			</div>
+			<p>
+				This essentially ensured that people would be able to view my webpages.
+	  	</p>
+	</li>
+	<li>
+		<p>
+			I used <code>ls -l</code> to ensure that the permissions were correctly set up for each file.
+		</p>
+		<div class="code">
+			ls -l
+		</div>
+	</li>
+	<li>
+		<p>
+			I also learned how to <code>ssh</code> into the DCS and work remotely.<br></br>
+			The syntax is
+		</p>
+			<div class="code">
+				<mark>ssh</mark> username@joshua.dcs.warwick.ac.uk
+			</div>
+			<p>
+				followed by a password which is prompted by the server.
+			</p>
+	</li>
+	<li>
+		<p>
+			I had to unzip a file which I downloaded. I used <code>unzip</code> in the terminal to do this:
+		</p>
+		<div class="code">
+			<mark>unzip</mark> file.zip
+		</div>
+
+	</li>
+	<li>
+		<p>
+			I learned how to execute scripts and other files in the terminal.
+			To do this, first I need to make sure that the files are <code>executable</code> which
+			an be ensured using the <code>chmod</code> command.<br></br>
+			Then, files can be executed by referencing them as such in the terminal:
+		</p>
+		<div class="code">
+			<mark>./file</mark>
+		</div>
+		<p>
+			The <code>./</code> signifies that the executable file is to be located within the <b>current</b>
+			directory, rather than just a general command.
+		</p>
+	</li>
+	<li>
+		<p>
+			I was reminded on how to create directories with the <code>mkdir</code> command.
+			I needed to make a few directories to organize my webpage structure and lab diaries for CS133.
+		</p>
+		<div class="code">
+			<mark>mkdir</mark> CS133 <br>
+			<mark>mkdir</mark> CS133/lab1 CS133/lab2 ... CS133/lab6
+		</div>
+	</li>
+	<li>
+		<p>
+			I created my <code>index.html</code> webpages using <code>touch</code>
+		</p>
+		<div class="code">
+			<mark>touch</mark> index.html
+		</div>
+		<p>
+			This created the index.html file. This index.html file is essentially what will
+			be viewed when a user connects to my user webpage at <code>dcs.warick.ac.uk/~u1617781</code>
+		</p>
+	</li>
+	<li>
+		<p>
+			I created a <code>name</code> file which stores my name within the <code>~/public_html/CS133/</code> directory.
+			I needed to use the <code>chmod</code> command as outlined earlier to ensure that the file was readable and executable
+			by all users.
+		</p>
+		<div class="code">
+			<mark>echo</mark> "Aaron Baw" <mark>&gt;</mark> ~/public_html/CS133/name
+		</div>
+		<p>
+
+		</p>
+	</li>
+
+
+
+</ol>
+
+<h2>Commands:</h2>
+<ul>
+	<li><p>
+		<code>cp</code>: Copy a file. Requires two arguments, source and destination. An example might be </p>
+			<div class="code"><mark>cp</mark> ~nick/cs133/infotutorial ./infotutorial
+		</div>
+	</li>
+
+	<li>
+		<p>
+			<code>chmod</code>:
+			Edit the permissions for a file or directory.
+		</p>
+		<div class="code">
+			<mark>chmod</mark> -R a+r<br>
+			<mark>chmod</mark> o+x
+		</div>
+		<p>
+			Requires that you specify the Group type (Owner, All, User, Group) as well as
+			permission (Read, Write, Execute denoted by rwx), and also typically whether this is added or removed.
+		</p>
+	</li>
+
+	<li>
+		<p>
+			<code>ssh</code>:
+			Remotely access the machine from a terminal.
+		</p>
+		<div class="code">
+			<mark>ssh</mark> username@server
+		</div>
+	</li>
+	<li>
+		<p>
+		<code>ls -l</code>:
+			Returns a list of files and other useful information, such as
+			the permissions for each file / directory, size in bytes, date of last modification and
+			the owner.
+		</p>
+	</li>
+	<li>
+		<p>
+			<code>pwd</code>: Prints the working directory.
+		</p>
+		<div class="code">
+			<mark>pwd</mark>
+		</div>
+	</li>
+</ul>
+</div>
+<div class="bg-image"></div>
+</body>
+</html>

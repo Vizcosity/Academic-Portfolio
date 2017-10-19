@@ -1,0 +1,160 @@
+<html>
+  <head>
+    <title>CS133 Lab 6 Diary</title>
+    <link rel="stylesheet" type="text/css" href="../diary.css" />
+
+    <link rel="stylesheet" type="text/css" href="../../public_assets/portfolio.css">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic|Muli:300|Roboto:300" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="content-wrap">
+    <h1>
+      Lab 6: Advanced LaTeX
+    </h1>
+
+    <h2>
+      Exercises
+    </h2>
+    <hr noshade>
+    <h3>
+      BibTeX
+    </h3>
+    <ol>
+      <li>
+        <p>
+          To create a BibTeX reference to an article I can add the following to a <code>.bib</code> file:
+        </p>
+        <div class="code">
+          @article{label2,<br>
+            author = "Mr BoyManJr",<br>
+            title = "The Science of Caring",<br>
+            year = "2141",<br>
+            journal = "IEEE Transactions",<br>
+            volume = "33",<br>
+            number = "1",<br>
+            pages = "12--52"<br>
+          }
+        </div>
+        <p>
+          Instead of <code>@artcile</code> in front of the curly braces, different tags can be used such as <code>@book</code>. This is useful as it will change the formatting of the reference when it is cited later on.
+        </p>
+      </li>
+      <li>
+        <p>
+          I created a number of references in my <code>bibliography.bib</code> file, and then focused on adding these to my LaTeX document.
+          To add the contents of the bibliography to my LaTeX document, I need to import the file using the following command:
+        </p>
+        <div class="code">
+          \bibliography{bibliography}
+        </div>
+        <p>
+          There are a number of different formatting options, or styles, that can be used to embed the references into the LaTeX document. These are configured using the
+          <code>\bibliographystlye{...}</code> command. A number of different options exist such as <code>plain</code>, <code>ieeetr</code> and <code>alpha</code> to name a few.
+        </p>
+        <div class="code">
+          \bibliographystlye{plain} % I went with plain for the purpose of simplicity.
+        </div>
+      </li>
+      <li>
+        <p>
+          To cite a source, all I need to do is use the <code>\cite{labelname}</code> command as follows:
+        </p>
+        <div class="code">
+          According to the works of Einsten \cite{generalRelativityPaper1} there is a fundamental link between energy and mass.
+        </div>
+      </li>
+      <li>
+        <p>
+          Compiling LaTeX with BibTeX is a little tricky and inconvient. It requires 4 commands:
+        </p>
+        <div class="code">
+          <mark>pdflatex</mark> document % Sets up initial pdf file<br>
+          <mark>bibtex</mark> document % Takes pdf file and generates bibliography<br>
+          <mark>pdflatex</mark> document % Embeds the citations<br>
+          <mark>pdflatex</mark> document % Fixes numbering and other issues<br>
+        </div>
+      </li>
+    </ol>
+
+    <h3>Advanced LaTeX</h3>
+
+    <ol>
+      <li>
+        <p>
+          I learnt about the <code>algorithm</code> and <code>algorithmic</code> packages in LaTeX, each of which need to be added to the preamble using the <code>\usagepackage{...}</code>.
+          <code>algorithmic</code> can be used to embed
+          mathematical algorithms into LaTeX documents. I created a generic <code>for</code> loop in LaTex:
+        </p>
+        <div class="code">
+          \begin{algorithmic}<br>
+          \STATE $n=10$<br>
+          \FOR{i=0; $i<=n$; i++} <br>
+          \IF{n Even} \PRINT i \ENDIF \ENDFOR<br>
+          \end{algorithmic}<br>
+        </div>
+        <p>
+          An interesting feature I learnt about these <code>algorithmic</code> commands is that they are statements themselves, meaning that they can be nested within each other like I have done with the <code>\FOR</code> and <code>\IF</code> statements.
+        </p>
+      </li>
+      <li>
+        <p>
+          Using the <code>algorithm</code> package, floating algorithms can be added to my LaTeX document which treats them a lot more like embedded figures, allowing them to be captioned and so on.
+        </p>
+        <div class="code">
+          \begin{<mark>algorithm</mark>}<br>
+            % Normal algorithm placed here.<br>
+          \end{<mark>algorithm</mark>}
+        </div>
+        <p>
+          All that is required to form a floating algorithm is to wrap the contents of the <code>algorithmic</code> environment in a new <code>algorithm</code> environment.
+        </p>
+      </li>
+    </ol>
+
+    <h3>Embedding source code</h3>
+    <ol>
+      <li>
+        <p>
+          The <code>listings</code> package can be used to embed source code into LaTeX documents from a number of different programming languages such as <code>Java</code> and <code>Python</code>.
+          Source code is added using the following commands:
+        </p>
+        <div class="code">
+          \lstsetlanguage{Java}<br>
+          \begin{lstlisting}<br>
+          String word = "Apple";<br>
+          for (int i = 0; i < word.length; i++){<br>
+            if (1%2==0) System.out.println(word[i]);<br>
+          }<br>
+          \end{lstlisting}
+        </div>
+      </li>
+      <li>
+        <p>
+          I also learnt that instead of manually typing in the code, the package is powerful enough to read code from a file and add it to the document using the <code>\lstinputlisting{..path..}</code>
+        </p>
+      </li>
+      <li>
+        <p>
+          The package also includes some interesting customization features where <code>\DeclareFixedFont{...}</code> can be used to set different fonts for different contexts within the source code such as when something
+           should be bold or italic. A more detailed <code>\lstset{...}</code> can also be used to fine tweak settings:
+        </p>
+        <div class="code">
+          % Curly brace is used with a number of different parameters this time<br>
+          \<mark>lstset</mark>{<br>
+          language=Java,<br>
+          basicstyle=\ttm,<br>
+          keywordstyle=\ttb\color{{deepred}},<br>
+          stringstyle=\color{deepblue},<br>
+          frame=tb,<br>
+          showstringspaces=false<br>
+          }
+        </div>
+      </li>
+    </ol>
+
+
+  </div>
+  <div class="bg-image"></div>
+  </body>
+</html>

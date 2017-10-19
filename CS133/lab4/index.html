@@ -1,0 +1,190 @@
+<html>
+  <head>
+    <title>CS133 Lab 4 Diary</title>
+    <link rel="stylesheet" type="text/css" href="../diary.css" />
+
+    <link rel="stylesheet" type="text/css" href="../../public_assets/portfolio.css">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic|Muli:300|Roboto:300" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="content-wrap">
+    <h1>
+      Lab 4: Introduction to LaTeX
+    </h1>
+
+    <h2>
+      Exercises
+    </h2>
+    <hr noshade>
+    <h3>
+      Creating a LaTeX document
+    </h3>
+
+    <ol>
+      <li>
+        <p>
+          The first step in creating a LaTeX document is to declare the
+          <code>documentclass</code> and subsequent <code>preamble</code>.
+          The <code>documentclass</code> declaration specifies the type of LaTeX
+          document that should be made; e.g. article, book, etc. The preamble sets
+          up the LaTeX environment by setting document properties and also allows for
+          packages to be imported.
+        </p>
+        <div class="code">
+          <mark>\documentclass{</mark>article<mark>}</mark> % Uses the article document class. <br><br>
+
+          %Preamble start <br>
+          <mark>\title{</mark>My First LaTeX Document<mark>}</mark> <br>
+          <mark>\author{</mark>Aaron Baw<mark>}</mark> <br>
+          <mark>\date{</mark>\today<mark>}</mark> <br>
+          % END of preamble. <br>
+
+        </div>
+        <p>
+          After declaring the preamble, the main section of the document can
+          be created.
+        </p>
+        <div class="code">
+          <mark>\begin{</mark>document<mark>}</mark> <br>
+          <mark>\maketitle</mark> % Prints heading information e.g. title <br>
+          % DOCUMENT CONTENT HERE... <br>
+          <mark>\end{</mark>document<mark>}</mark>
+        </div>
+      </li>
+      <li>
+        <p>
+          After setting up the document, I compiled it from the terminal using <code>pdflatex</code>:
+        </p>
+        <div class="code">
+          <mark>pdflatex</mark> firstDoc.tex
+        </div>
+      </li>
+    </ol>
+
+    <h3>Sectioning Content</h3>
+    <p>
+      Depending on the LaTeX document type (declared in the document type), it may be appropriate to
+      section off the content to make it more organized and readable.
+    </p>
+
+    <ol>
+      <li>
+        <p>
+          In LaTeX, there are many different sectioning options, such as by chapter, section and
+          subsections. I tried out a few of these in my document.
+        </p>
+        <div class="code">
+          <mark>\chapter{</mark>The Beginning, of the beginning.<mark>}</mark> <br>
+          Sub-section upon sub-section upon sub-section upon sub-section...<br>
+          <mark>\section{</mark>The First section, of the beginning, of the beginning.<mark>}</mark> <br>
+
+          <mark>\subsection{</mark>The first sub-section of the first section of the beginning of the beginning.<mark>}</mark>
+        </div>
+      </li>
+      <li>
+        <p>
+          There are a couple more useful commands to organize documents such as <code>\tableofcontents</code>
+          and <code>\appendix</code> which conveniently generate content tables and appendices.
+        </p>
+        <div class="code">
+          <mark>\tableofcontents</mark><br>
+          <mark>\appendix</mark>
+        </code>
+      </li>
+      <li>
+        <p>
+          A curious thing to note about LaTeX is that the usage of quotation marks is slightly diffeerent
+          to what one would expect. Instead of using regular appostrophes, it is required to use a pair of
+          back ticks for the start of the quote, and a pair of single apostraphes at the end of the quote.
+        </p>
+        <div class="code">
+          <mark>``</mark>This is how you quote in LaTeX<mark>''</mark>
+        </div>
+      </li>
+    </ol>
+
+    <h3>Laying out Content</h3>
+    <p>Different environments can be declared inside a LaTeX document to display information in different ways.
+    <ol>
+      <li>
+        <p>
+          One example of such environments is enumeration in LaTeX which is a type of numbered list that I
+          used in my document.
+        </p>
+        <div class="code">
+          <mark>\begin{</mark>enumerate<mark>}</mark><br>
+          <mark>\item1</mark> Content... <br>
+          <mark>\item2</mark> More content... <br>
+          <mark>\end{</mark>enumerate<mark>}</mark>
+        </div>
+      </li>
+    </ol>
+
+    <h3>Embedding figures / images</h3>
+    <ol>
+      <p>Displaying figures utilizes a type of environment such as those outlined above. </p>
+      <li>
+        <p>
+          An additional package <code>graphicx</code> is required in order to embed figures with LaTeX.
+        </p>
+        <div class="code">
+          <mark>\usepackage{</mark>graphicx<mark>}</mark>
+        </div>
+        <p> This line is added within the preamble. </p>
+      </li>
+      <li>
+        <p>
+          To embed an image I set up the environment and added the image as follows:
+        </p>
+        <div class="code">
+          \begin{figure}[h]<br>
+            \begin{center}<br>
+              \includegraphics[width=80mm]{/dcs/16/u1617781/Pictures/sample-cat.jpg}<br>
+              \caption{An adorable cat}<br>
+              \label{reflabel}<br>
+            \end{center}<br>
+          \end{figure}
+        </div>
+        <p>
+          There are several options that can be altered when using the figure environment in LaTeX, such as
+          [width=x] or [height=x] which allows you to customize the desired height/width of the embedded image.
+        </p>
+        <p>
+          The [h] selector tells the environment where to most appropriately place the figure, in this case in relation to
+          the header.
+        </p>
+      </li>
+    </ol>
+
+    <h3>Mathematical Equations and other symbols</h3>
+    <ol>
+
+      <li>
+        <p>
+          Mathematical equation environments can be used in LaTeX to display equations, such as the quadratic formula which I used in the following example:
+        </p>
+      <div class="code">
+        \begin{equation}<br>
+        <mark>x=\frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}</mark><br>
+        \label{quadraticFormula}
+        \end{equation}
+      </div>
+      <p>
+        The <code>\frac{...}{...}</code> syntax tells latex to treat the content in each of the curly braces as the numerator and denominator of a fraciton.
+        <code>\pm</code> embeds a plus or minus symbol, and I also used <code>\sqrt{...}</code> to wrap the square root portion of the formula within the
+        appropriate symbol.
+      </p>
+    </li>
+    <li>
+      <p>
+        Another useful capability of using figures is that they can be defined by using <code>\label{name}</code> and then referenced later to be embedded as a copy.
+        The benefit to this is that if the original content changes, the rest of the figures update to reflect this change.
+      </p>
+    </li>
+    </ol>
+
+  </div>
+  <div class="bg-image"></div>
+  </body>
+</html>

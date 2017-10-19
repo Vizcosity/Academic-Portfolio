@@ -1,0 +1,5 @@
+linuxGuide.pdf:
+linux-logo-2400px.png:
+permissionsListing.png:
+linuxGuide.tex:
+linuxGuide.log:

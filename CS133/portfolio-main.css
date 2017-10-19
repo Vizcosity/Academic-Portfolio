@@ -1,0 +1,204 @@
+/* CSS FOR CS133 PORTFOLIO COVER PAGE */
+
+html {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+div.main-content-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+div.bg-image {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -2;
+  background-image: url("https://source.unsplash.com/waZEHLRP98s");
+  background-size: cover;
+  background-position: center center;
+  filter: blur(15px);
+  transform: scale(1.1);
+  overflow: hidden;
+}
+
+div.bg-overlay {
+  background-color: rgba(66,69,72,0.5);
+  height: 100%;
+  width: 100%;
+}
+
+div.title-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div.nav-content-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+}
+
+div.nav-left-wrap {
+  width: 33%;
+}
+
+div.nav-right-wrap {
+  width: 33%;
+}
+
+div.content-diary-wrap {
+  background-color: rgba(255,255,255,0.8);
+  width: 33%;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+ h1 {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
+   font-size: 50px;
+   color: white;
+   margin: 0;
+   margin-bottom: 10px;
+ }
+
+ h2 {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   font-size: 25px;
+   color: rgba(255,255,255,0.6);
+   margin: 0;
+ }
+
+ .about-link, .home-link {
+   text-align: center;
+   font-size: 30px;
+ }
+
+ strong {
+   font-weight: 600;
+ }
+
+ a {
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: rgba(39, 39, 39, 0.77);
+    font-weight: 200;
+    margin: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+ a:hover {
+   color: rgba(0,0,0,1);
+ }
+
+ nav {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.32);
+}
+
+/*nav a:before {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    visibility: hidden;
+    height: 3px;
+    left: 0;
+    bottom: -16px;
+    background-color: #7da7d9;
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+}
+
+nav a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}*/
+
+nav a {
+  -webkit-tap-highlight-color: transparent;
+  transition-duration: 500ms;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  color: rgba(39, 39, 39, 0.77);
+  margin-right: 20px;
+  position: relative;
+  text-decoration: none; }
+  nav a:before {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    visibility: hidden;
+    height: 3px;
+    left: 0;
+    bottom: -10px;
+    background-color: #232323;
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s; }
+  nav a:hover {
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+  }
+  nav a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1); }
+
+ div.title-wrap {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+ }
+
+ div.navbar-diaries {
+   margin-left: auto;
+   margin-right: 15px;
+ }
+
+
+
+.cover-background {
+   background-image: url("https://images.unsplash.com/photo-1468336210566-1e743694dc18?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=900&fit=crop&s=d66dab0e4736a17b950257eadf8b201a.jpg");
+
+ }

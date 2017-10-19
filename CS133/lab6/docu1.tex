@@ -1,0 +1,49 @@
+\documentclass{IEEEtran}
+
+% Preamble
+\title{An Introduction to BibTeX}
+\author{Aaron Baw}
+\date{\today}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{listings}
+% Preamble end
+
+\begin{document}
+
+% Docu begin
+\maketitle{An introduction to BibTeX}
+
+
+It is required of society to reference the works of H.G. Wellington-Boots \cite{label1} to understand the need for a type of
+requirements that should be consulted when referring to the absolute definitions of a particular encounter.
+
+Another important detail to keep in mind is that of the world renowned scientists \cite{label2, label3} that have already explored such matters in great depth.
+
+
+\section{Using Algorithms}
+
+Algorithms have their roots in the most fundamental forms of maths. Below I shall demonstrate one of the most useful equations that
+humans tend to abide by.
+\begin{algorithm}
+  \begin{algorithmic}
+    \STATE $n=10$
+    \FOR{i=0; $i<=n$; i++} \STATE{Loop Through for.}
+    \IF{n Even} \PRINT i \ENDIF \ENDFOR
+  \end{algorithmic}
+  \caption{A Loop which prints out numbers from 0 to n.}
+  \label{for1}
+\end{algorithm}
+
+\lstset{language=Java}
+\begin{lstlisting}
+String word = "Apple";
+for (int i = 0; i < word.length; i++){
+  if (1%2==0) System.out.println(word[i]);
+}
+\end{lstlisting}
+
+
+\bibliographystyle{ieeetr}
+\bibliography{bibliography}
+\end{document}

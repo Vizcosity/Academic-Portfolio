@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#if [[ $#==1 ]]
+#then
+#	echo "Arguments: $#"
+#	echo "Usage: su>&2m <number> [<number>...]"
+#	exit 1
+#fi
+
+sum=0
+
+for a in $*
+do 
+      	case $a in
+		-h) echo "HELP: Input any number of arguments (numbers) to be summed.">&2; exit 1;;
+		[^0-9]*) echo "Arguments must be numbers.">&2; exit 1;;
+	esac
+	
+	sum=$(($sum+$a))
+
+	#echo "$a"
+done
+
+#sum=0 #Initialize sum.
+#sum=$(expr $1 + $2 + $3 + $4) #Grab the first 3 arguments from CLI.
+
+echo "$sum"
+exit 0

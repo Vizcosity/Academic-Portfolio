@@ -1,0 +1,236 @@
+<html>
+  <head>
+    <title>CS133 Lab 3 Diary</title>
+    <link rel="stylesheet" type="text/css" href="../diary.css" />
+
+    <link rel="stylesheet" type="text/css" href="../../public_assets/portfolio.css">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic|Muli:300|Roboto:300" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="content-wrap">
+    <h1>
+      Lab 3: UNIX Processes and Scripting
+    </h1>
+
+    <h2>
+      Exercises
+    </h2>
+    <hr noshade>
+    <h3>
+      UNIX Processes
+    </h3>
+
+    <ol>
+      <li>
+	<p>
+	  I investigated UNIX processes using a few different commands. <br>
+	  <code>ps</code> lists the current running processes in my instance on my username.<br>
+	  I can use the <code>|</code> pipe operator to feed the stdout of one processes into the
+	  stdin of another process. This can be combined with the <code>grep</code> command to filter
+	  through the output of a command and only return what is desired.
+	</p>
+	<div class="code">
+	  <mark>ps</mark> | <mark>grep</mark> kate
+	</div>
+	<p>
+	  It is also possible to use the <code>pgrep</code> command to achieve a similar result.
+    However, this only returns the PID of a process, rather than the complete list of useful information
+    returned by <code>ps</code>, such as the running time, and owner of the process.
+	</p>
+      </li>
+      <li>
+        <p>
+          Terminating active processes in a particular bash instance / terminal
+          can be done using <code>Ctrl+C</code>. When this becomes unresponsive, <code>Ctr+Z</code> can be used
+          for a 'forced' or 'hard' stop / exit.
+        </p>
+        <p>
+          When processes crash, the <code>pkill</code> command can be used in conjunction
+          with <code>pgrep</code> in order to kill the process, by sending an appropriate 'kill' signal
+          using the <code>--signal</code> argument in the command line.
+        </p>
+        <div class="code">
+          <mark>pkill</mark> firefox
+        </div>
+      </li>
+    </ol>
+
+      <h3>Scripting</h3>
+    <ol>
+      <li>
+        <p>
+          I created a script called <code>runloop.sh</code> using the following code from the lab webpage:
+        </p>
+        <div class="code">
+          <mark>#!/bin/bash</mark> <br>
+          javac Loop.java <br>
+          java Loop <br>
+        </div>
+        <p>
+          I also updated the script to make use of the <code>sleep</code> command so that
+          the script would wait a few seconds before exiting.
+        </p>
+        <div class="code">
+          ... <br>
+          <mark>sleep</mark> 5s
+        </div>
+      </li>
+      <li>
+        <p>
+          Using <code>chmod</code> I changed the execute permissions for the <code>runloop</code>
+          script so that it can be executed from the command-line using <code>./runloop.sh</code>.
+          Alternatively, <code>sh runloop</code> can also be used to run the script. The Advantage of
+          updating the permissions as mentioned is that the script can then be placed in one of the directories
+          linked to the <code>PATH</code> and used as a command from the command line.
+        </p>
+        <div class="code">
+          <mark>chmod</mark> u+x runloop.sh
+        </div>
+      </li>
+      <li>
+        <p>
+          I created another script this time to sum up 3 command-line arguments which are passed to it.
+        </p>
+        <div class="code">
+          sum=0 <br>
+          sum=$(expr $1 + $2 + $3) <br>
+          echo "$sum" <br>
+          exit 0 <br>
+        </div>
+        <p>
+          <code>expr</code> evaluates the succeeding code which sums up the 3 command-line arguments, while
+          the enclosing <code>$(...)</code> essentailly takes the output from this evaluation, and saved it
+          to the variable <code>sum</code> instead of printing it out to the stdout stream.
+        </p>
+      </li>
+      <li>
+        <p>
+          I then extended the script so that it checked to see if the number of arguments
+          passed into the program are not exactly 3 by implementing an <code>if</code> statement.
+          The if statement checks if <code>$#</code>, the number of command-line arguments is
+          equal to 3. If so, then it prints the usage for the script using <code>echo</code>.
+        </p>
+        <div class="code">
+          if [[ $#!=1 ]] <br>
+          then <br>
+              echo "Arguments entered: $#" <br>
+              echo "Usage: ./sum {num1} {num2} {num3}" <br>
+              exit 1 <br>
+          fi <br>
+        </div>
+      </li>
+      <li>
+        <p>
+          I extended the script so that an unlimited number of arguments could be passed and then summmed appropriately.
+          This was done using a <code>for</code> loop as can be seen below. The <code>a in $*</code> expression
+          inside the for loop semantically means to iterate through each command-line argument passed as if it were
+          an array of values, and to assign the value of the particular argument at that iteration to the variable
+          <code>a</code>.
+        </p>
+        <div class="code">
+          for a in $* <br>
+          do <br>
+      	   case $a in <br>
+		         -h) echo "HELP: Input any number of arguments (numbers) to be summed.">&2; exit 1;; <br>
+		           [^0-9]*) echo "Arguments must be numbers.">&2; exit 1;; <br>
+	              esac <br>
+
+	               sum=$(($sum+$a)) <br>
+
+	                #echo "$a" <br>
+          done <br>
+        </div>
+        <p>
+          Within the for loop I declared, there is some code which uses the <code>case</code> function
+          and a regular expression in order to check if an argument <code>-h</code> is entered. If so, then the program will
+          print the help message to the sterr stream indicated by the <code>&gt;&amp;2</code>. Otherwise, the program then sums all the arguments
+          together. This is done using <code>$((..))</code> which also evaluates the expression within
+          the parenthesis and assigns it to the variable specified much like the use of <code>expr</code> and
+          the single set of surrounding parenthesis used previously.
+        </p>
+        <p>
+          After the for loop terminates, the sum is completed and is printed to stdout.
+        </p>
+      </li>
+      <li>
+        <p>
+          For the final exercise I created a <code>pair</code> script which takes in an even
+          number of arguments and prints out the sums of all the pairs passed.
+        </p>
+        <div class="code">
+          if [[ $#%2 -eq 1 ]] <br>
+          then <br>
+              echo "Please enter an even number of arguments" <br>
+              exit 1 <br>
+          fi <br><br>
+
+
+
+          for (( i = 0 ; i < ${#argArray[@]} ; i=$i+2 )) <br>
+          do <br> <br>
+
+              sum=$((${argArray[${i}]}+${argArray[${i+1}]})) <br>
+              echo "Pair Sum: of ${argArray[${i}]} and ${argArray[${i+1}]} = " $sum <br><br>
+
+          done
+        </div>
+        <p>
+          The <code>if</code> statement I declared uses the <code>%</code> modulo operator
+          to check if the number of arguments are not divisble by two, indicating they would be odd.
+          If so, the program prints out the usage statement and exits.
+        </p>
+        <p>
+          I then declared a <code>for</code> loop which iterates through the command-line argments
+          passed much in a similar way to how I did earlier. The key difference here is that the
+          loop this time uses an iterator, <code>i</code> which increments by 2 each iteration, and treats the arguments ver much like an array.
+          The benefit of doing this is so that my sum calculation done later on in the for loop can target
+          the current element and the next so that they can be summed and then printed to the stdout stream.
+        </p>
+      </li>
+    </ol>
+
+    <h2>
+      Commands:
+    </h2>
+    <ul>
+       <li>
+	<p>
+	  <code>ps</code>: inspects the processes that are currently running within your username.
+	</p>
+	<div class="code">
+	  <mark>ps</mark>
+	</div>
+      </li>
+      <li>
+	<p>
+	<code>&amp;</code>: runs specified process in the background so that terminal
+	can still be used.
+	</p>
+	<div class="code">
+	  kate file.html <mark>&amp;</mark>
+	</div>
+      </li>
+      <li>
+        <p>
+          <code>pgrep</code>: returns the PID of a program entered as an argument
+        </p>
+        <div class="code">
+          <mark>pgrep</mark> process_name
+        </div>
+      </li>
+      <li>
+        <p>
+          <code>
+            pkill
+          </code>: sends a specified kill <code>--signal</code> to the process
+        </p>
+        <div class="code">
+          <mark>pkill</mark> firefox --signall KILL
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="bg-image"></div> 
+  </body>
+</html>

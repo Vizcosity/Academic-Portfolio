@@ -1,0 +1,22 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+div.header-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+div.content-wrap {
+  max-width: 800px;
+  padding: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.portfolio-items-wrapper {
+
+}
